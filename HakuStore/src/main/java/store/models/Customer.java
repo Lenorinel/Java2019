@@ -1,11 +1,9 @@
-package models;
+package store.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,22 +11,24 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@DynamicInsert
-@DynamicUpdate
-@Entity
 @Builder
-@Table(name = "customers_tab")
+@Entity
+@Table(name = "customer_tab")
 public class Customer {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (nullable = false)
+    @Column(nullable = false)
     private Long id;
 
     private String name;
+    private String address;
+    private String comment;
+    private Integer count;
 
-    @Column(name = "insta_login", length = 100, nullable = false)
-    private String instaLogin;
+    @Column(name = "instagram_login", length = 100, nullable = false)
+    private String instagram;
 
-    @OneToMany
-    private List<PLU> purchases;
+    @OneToMany(mappedBy = "customer")
+    private List<Transaction> purchases;
 }

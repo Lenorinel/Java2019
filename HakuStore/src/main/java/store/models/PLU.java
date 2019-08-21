@@ -1,4 +1,4 @@
-package models;
+package store.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 
 import javax.persistence.*;
+import java.lang.reflect.Type;
 import java.util.Date;
 
 @Data
@@ -22,7 +23,12 @@ public class PLU {
     private Long id;
 
     private String name;
-    private String type;
+
+    @Enumerated(value = EnumType.STRING)
+    private СlothesType type;
+
+    @Enumerated (value = EnumType.STRING)
+    private  PLUSize size;
 
     @Column(name = "first_price")
     private Double firstPrice;
@@ -40,9 +46,10 @@ public class PLU {
     @JoinColumn(name = "store_id", nullable = false)
     private Store store;
     //Как это будет работать поочередно? И нормально ли, что у добавленного товара уже будет колонка
-    // с транзакшн_ид?
+    // с транзакшн_ид? или создать доп таблицу? типа два?? праймери кея на товар + транзу
     //Это при продаже, добавление в таблицу транзакций
     @ManyToOne
     @JoinColumn (name = "transaction_id")
     private Transaction transaction;
+
 }

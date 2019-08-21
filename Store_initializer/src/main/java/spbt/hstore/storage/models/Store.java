@@ -1,14 +1,11 @@
-package models;
+package spbt.hstore.storage.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import java.util.Date;
+import javax.persistence.*;
 import java.util.List;
 
 @Data
@@ -18,12 +15,23 @@ import java.util.List;
 @Builder
 @Table(name = "stores_tab")
 public class Store {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String address;
-    private Date arrivalDate;
+
+    @Enumerated(value = EnumType.STRING)
+    private List<WeekDays> arrivalDays;
+
     private String workTime;
+
+    //количество шмота купленного в данном магазине
+    private Integer count;
+
     //private byte rating;
+
     @OneToMany(mappedBy = "store")
     private List<PLU> pluListFromStore;
 

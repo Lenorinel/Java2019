@@ -1,4 +1,4 @@
-package models;
+package spbt.hstore.storage.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,7 +19,7 @@ import java.util.List;
 public class Transaction {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "transaction_date")
@@ -34,7 +34,11 @@ public class Transaction {
 
     private Double transactionPrice;
 
-    @OneToMany (mappedBy = "transaction")
+
+    @OneToMany(mappedBy = "transaction")
     private List<PLU> plusInTransaction;
 
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 }
