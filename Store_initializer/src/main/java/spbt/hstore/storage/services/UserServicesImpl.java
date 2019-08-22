@@ -32,8 +32,8 @@ public class UserServicesImpl implements UserServices {
 
         if (userCandidate.isPresent()){
             User user = userCandidate.get();
-            if (passwordEncoder.matches(form.getPassword(), user.getPassword())){
-                CookieValue cookieValue = CookieValue.Builder
+            if (passwordEncoder.matches(form.getPassword(), user.getHashPassword())){
+//                CookieValue cookieValue = CookieValue.builder()
             }
         }
 

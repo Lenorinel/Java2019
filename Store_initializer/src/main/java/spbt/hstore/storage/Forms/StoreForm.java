@@ -1,4 +1,4 @@
-package store.Forms;
+package spbt.hstore.storage.Forms;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

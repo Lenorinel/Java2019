@@ -6,6 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import spbt.hstore.storage.models.User;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,7 +22,17 @@ public class UserDto {
 
 
     public static UserDto from(User user){
-        return UserDto.builder() // нет библиотеки?
+        return UserDto.builder()
+                .id(user.getId())
+                .login(user.getLogin())
+                .name(user.getName())
+                .role(user.getRole().toString())
+                .build();
     }
 
+    public static List<UserDto> from(List<User> users){
+        return users.stream()
+                .map(UserDto::from)
+                .collect(Collectors.toList());
+    }
 }

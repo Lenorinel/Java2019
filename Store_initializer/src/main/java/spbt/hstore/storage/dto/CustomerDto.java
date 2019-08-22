@@ -18,4 +18,5 @@ public class CustomerDto {
     private Integer count;
     private String instagram;
 
+
 }

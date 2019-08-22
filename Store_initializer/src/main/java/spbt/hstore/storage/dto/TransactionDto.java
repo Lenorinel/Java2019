@@ -19,6 +19,6 @@ public class TransactionDto {
     private String comment;
     private Boolean delivery;
     private Double transactionPrice;
-    private String pluName; //корректно ли такое использование товара??
-    private String customer; //-~-
+    //private String pluName; корректно ли такое использование товара?? DTOUsera
+    //private String customer; //-~- Dto Кастомера (нужно чтобы из списка транзакций по выбору пользака открыть его карточку)
 }

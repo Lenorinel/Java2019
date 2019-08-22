@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -24,7 +25,7 @@ public class PLU {
     private String name;
 
     @Enumerated(value = EnumType.STRING)
-    private СlothesType type;
+    private ClothesType type;
 
     @Enumerated(value = EnumType.STRING)
     private  PLUSize size;
@@ -36,7 +37,7 @@ public class PLU {
     private Double sellPrice;
 
     // Дата добавления в базу, фактически дата покупки
-    private Date addingDate;
+    private LocalDate addingDate;
     //в наличие
     private Boolean status;
 
