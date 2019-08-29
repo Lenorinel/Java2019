@@ -19,22 +19,21 @@ public class PLUController {
     @Autowired
     private PLUservices pluServices;
 
-    @RequestMapping(value = "/StoreItems", method = RequestMethod.GET)
-    public String getPluPage(Model model, @RequestParam("store") Long storeId){
+    @GetMapping(value = "/StoreItems")
+    public String getStorePage(Model model, @RequestParam("store") Long storeId){
         List<pluDto> items = pluServices.getPlusByStoreId(storeId);
         model.addAttribute("plus", items);
         model.addAttribute("storeId",storeId);
         return "plus";
     }
 
-    @RequestMapping(value = "/StoreItems", method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_UTF8_VALUE,
-            consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @PostMapping(value = "/StoreItems")
     @ResponseBody
     public List<pluDto> addPluToStore(@RequestParam("store") Long storeId,
                                       @RequestBody PLUForm form) {
         pluServices.add(storeId, form);
         return pluServices.getPlusByStoreId(storeId);
     }
+
 
 }

@@ -24,7 +24,7 @@ public class Customer {
     private String name;
     private String address;
     private String comment;
-
+    private Integer count;
 
     @Column(name = "instagram_login", length = 100, nullable = false)
     private String instagram;

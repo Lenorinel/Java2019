@@ -18,22 +18,22 @@ public class StoreDto {
     private Long id;
     private String  name;
     private String address;
-   // private String arrivalDay; //тут нужен лист
+    private List<String> arrivalDay; //тут нужен лист
     private String workTime;
     private Integer count; //count items from this store
 
-    private static StoreDto from(Store store){
+    public static StoreDto from(Store store){
         return StoreDto.builder()
                 .id(store.getId())
                 .name(store.getName())
                 .address(store.getAddress())
-              //  .arrivalDays(store.getArrivalDays())
+                .arrivalDay(store.getArrivalDays().getArrivalDays())
                 .workTime(store.getWorkTime())
                 .count(store.getCount())
                 .build();
     }
 
-    private static List<StoreDto> from(List<Store> stores){
+    public static List<StoreDto> from(List<Store> stores){
         return stores.stream()
                 .map(StoreDto::from)
                 .collect(Collectors.toList());

@@ -10,7 +10,15 @@ public interface PLUservices {
 
     List<pluDto> getPlusByStoreId(Long storeId);
 
+    List<pluDto> getAllPlus();
+
     void add(Long storeId, PLUForm plu);
 
     void add(PLUForm plu);
+
+    void delete(Long id);
+
+    void update(Long id, PLUForm form);
+
+    void changeStatus(Long id);
 }

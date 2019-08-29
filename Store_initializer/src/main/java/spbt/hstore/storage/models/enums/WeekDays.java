@@ -1,4 +1,4 @@
-package spbt.hstore.storage.models;
+package spbt.hstore.storage.models.enums;
 
 public enum WeekDays {
     SUNDAY,

@@ -4,8 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import spbt.hstore.storage.models.Customer;
+import spbt.hstore.storage.models.PLU;
+import spbt.hstore.storage.models.Transaction;
 
 import java.sql.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 @AllArgsConstructor
@@ -19,6 +24,25 @@ public class TransactionDto {
     private String comment;
     private Boolean delivery;
     private Double transactionPrice;
-    //private String pluName; корректно ли такое использование товара?? DTOUsera
-    //private String customer; //-~- Dto Кастомера (нужно чтобы из списка транзакций по выбору пользака открыть его карточку)
+    private List<PLU> plu;
+    private Customer customer;
+
+    public static TransactionDto from(Transaction transaction){
+        return TransactionDto.builder()
+                .id(transaction.getId())
+                .transactionDate((Date) transaction.getDate())
+                .customerAddress(transaction.getCustomerAddress())
+                .comment(transaction.getComments())
+                .delivery(transaction.getDelivery())
+                .transactionPrice(transaction.getTransactionPrice())
+                .plu(transaction.getPlusInTransaction())
+                .customer(transaction.getCustomer())
+                .build();
+    }
+
+    public static List<TransactionDto> from(List<Transaction> transactions){
+        return transactions.stream()
+                .map(TransactionDto::from)
+                .collect(Collectors.toList());
+    }
 }

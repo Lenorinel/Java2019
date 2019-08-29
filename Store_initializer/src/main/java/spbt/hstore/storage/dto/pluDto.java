@@ -5,9 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import spbt.hstore.storage.models.ClothesType;
 import spbt.hstore.storage.models.PLU;
-import spbt.hstore.storage.models.PLUSize;
 
 import java.util.List;
 import java.util.stream.Collectors;

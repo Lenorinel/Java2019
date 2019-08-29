@@ -4,11 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import spbt.hstore.storage.models.enums.ClothesType;
+import spbt.hstore.storage.models.enums.PLUSize;
 
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Data
 @AllArgsConstructor
@@ -28,7 +29,7 @@ public class PLU {
     private ClothesType type;
 
     @Enumerated(value = EnumType.STRING)
-    private  PLUSize size;
+    private PLUSize size;
 
     @Column(name = "first_price")
     private Double firstPrice;

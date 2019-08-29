@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import spbt.hstore.storage.models.enums.UserRoles;
+import spbt.hstore.storage.models.enums.UserState;
 
 import javax.persistence.*;
 import java.util.List;
@@ -30,6 +32,9 @@ public class User {
     @Column(name = "hash_password")
     private String hashPassword;
 
-//    @OneToMany(mappedBy = "user") не нужно????
-//    private List<CookieValue> cookieValue;
+    @Enumerated(value = EnumType.STRING)
+    private UserState state;
+
+   @OneToMany(mappedBy = "user") //нужно?
+    private List<CookieValue> cookieValue;
 }

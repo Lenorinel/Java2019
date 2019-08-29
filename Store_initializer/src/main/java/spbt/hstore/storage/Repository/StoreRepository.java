@@ -13,6 +13,8 @@ public interface StoreRepository extends JpaRepository<Store, Long> {
     List<Store> findAllByCountOrderByCount(); //Как сделать вывод всех записей без конкретного селекта?
     List<Store> findAllByCountGreaterThan(Integer count);
 
+    void deleteById(Long id);
+
     //нужно два поиска, первый для инфо меню + 1-2 дня - открытие MainPage
     // второй для отображения списка магазинов с  ближайшего завоза - открытие StorePage
     //@Query(nativeQuery = true, value="SELECT * from stores_tab st ORDER BY st.date DESC"
