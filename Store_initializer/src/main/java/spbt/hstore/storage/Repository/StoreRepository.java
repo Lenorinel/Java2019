@@ -10,7 +10,7 @@ public interface StoreRepository extends JpaRepository<Store, Long> {
     //Для сортировки списка от большего count к меньшему
     //Или лучше NativeQuery написать?
     //@Query(nativeQuery = true, value="SELECT * from stores_tab st ORDER BY st.count DESC"
-    List<Store> findAllByCountOrderByCount(); //Как сделать вывод всех записей без конкретного селекта?
+    List<Store> findAllByOrderByCountDesc(); //Как сделать вывод всех записей без конкретного селекта?
     List<Store> findAllByCountGreaterThan(Integer count);
 
     void deleteById(Long id);

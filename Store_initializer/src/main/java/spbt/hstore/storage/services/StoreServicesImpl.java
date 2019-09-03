@@ -1,6 +1,7 @@
 package spbt.hstore.storage.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import spbt.hstore.storage.Forms.StoreForm;
 import spbt.hstore.storage.Repository.StoreRepository;
@@ -8,11 +9,13 @@ import spbt.hstore.storage.dto.StoreDto;
 import spbt.hstore.storage.models.DaysOfWeek;
 import spbt.hstore.storage.models.Store;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import static spbt.hstore.storage.dto.StoreDto.from;
 
+@Service
 public class StoreServicesImpl implements StoreServices {
 
     @Autowired
@@ -22,16 +25,29 @@ public class StoreServicesImpl implements StoreServices {
     @Transactional
     @Override
     public void addStore(StoreForm form) {
+
         Store newStore = Store.builder()
                 .name(form.getName())
                 .address(form.getAddress())
-                .arrivalDays(new DaysOfWeek(form.getArrivalDays()))
+                .arrivalDays(fromFormToDaysList(form))
                 .workTime(form.getWorkTime())
                 .comment(form.getComments())
                 .count(0)
                 .build();
 
         storeRepository.save(newStore);
+    }
+
+    private List<DaysOfWeek> fromFormToDaysList(StoreForm form){
+        List<String> temp = form.getArrivalDays();
+        List<DaysOfWeek> daysList = new ArrayList<>();
+
+        for (String stringDay: temp
+             ) {
+//            DaysOfWeek tempDay = new DaysOfWeek(stringDay); не отрабатывает AllArgsConstruct
+            daysList.add(new DaysOfWeek(stringDay));
+        }
+        return daysList;
     }
 
     @Transactional
@@ -49,7 +65,7 @@ public class StoreServicesImpl implements StoreServices {
 
         storeForUpdate.setName(form.getName());
         storeForUpdate.setAddress(form.getAddress());
-        storeForUpdate.setArrivalDays(new DaysOfWeek(form.getArrivalDays()));
+        storeForUpdate.setArrivalDays(fromFormToDaysList(form));
         storeForUpdate.setWorkTime(form.getWorkTime());
         storeForUpdate.setComment(form.getComments());
 

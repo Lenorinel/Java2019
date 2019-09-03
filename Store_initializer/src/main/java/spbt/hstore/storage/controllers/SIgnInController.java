@@ -22,16 +22,4 @@ public class SIgnInController {
         return "signIn";
     }
 
-    @PostMapping(value = "/signIn")
-    public String singIn(SignInForm form, HttpServletResponse response){
-        userServices.signIn(form);
-
-        Optional<String> cookieCandidate = userServices.signIn(form);
-        if (cookieCandidate.isPresent()){
-            Cookie cookie = new Cookie("clientId", cookieCandidate.get());
-            response.addCookie(cookie);
-            return "redirect:/workPlace";
-        }
-        else return "redirekt:/signIn";
-    }
 }

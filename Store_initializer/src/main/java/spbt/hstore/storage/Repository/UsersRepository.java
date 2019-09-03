@@ -9,5 +9,5 @@ import java.util.Optional;
 public interface UsersRepository extends JpaRepository<User, Long> {
     Optional<User> findUserById(Long id);
     Optional<User> findUserByLogin(String login);
-    List<User> findAllOrOrderByCount();
+    //List<User> findAllByOrderByCountDesc(); Для кастомера
 }

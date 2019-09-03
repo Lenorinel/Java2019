@@ -24,8 +24,7 @@ public class User {
 
     private String login;
     private String name;
-    //счетчик купленных вещей
-    private Integer count;
+
     @Enumerated(value = EnumType.STRING)
     private UserRoles role;
 
@@ -35,6 +34,4 @@ public class User {
     @Enumerated(value = EnumType.STRING)
     private UserState state;
 
-   @OneToMany(mappedBy = "user") //нужно?
-    private List<CookieValue> cookieValue;
 }

@@ -8,8 +8,6 @@ import java.util.Optional;
 
 public interface UserServices {
 
-    Optional<String> signIn(SignInForm form);
-    Optional<UserDto> getUserByCookie(String cookie);
     List<UserDto> getAllUsers();
 
 }

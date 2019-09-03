@@ -24,7 +24,8 @@ public class Store {
     private String address;
     private String comment;
 
-    private DaysOfWeek arrivalDays;
+    @OneToMany( mappedBy = "store")
+    private List<DaysOfWeek> arrivalDays;
 
     private String workTime;
 

@@ -24,6 +24,7 @@ public class Customer {
     private String name;
     private String address;
     private String comment;
+    //cчечик купленных вещей
     private Integer count;
 
     @Column(name = "instagram_login", length = 100, nullable = false)
