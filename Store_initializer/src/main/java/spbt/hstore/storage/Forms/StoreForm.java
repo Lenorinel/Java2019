@@ -16,5 +16,5 @@ public class StoreForm {
     private String address;
     private List<String> arrivalDays;
     private String workTime;
-    private String comments;
+    private String comment;
 }

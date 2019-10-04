@@ -29,9 +29,9 @@ public class StoreServicesImpl implements StoreServices {
         Store newStore = Store.builder()
                 .name(form.getName())
                 .address(form.getAddress())
-                .arrivalDays(fromFormToDaysList(form))
+//                .arrivalDays(fromFormToDaysList(form))
                 .workTime(form.getWorkTime())
-                .comment(form.getComments())
+                .comment(form.getComment())
                 .count(0)
                 .build();
 
@@ -67,7 +67,7 @@ public class StoreServicesImpl implements StoreServices {
         storeForUpdate.setAddress(form.getAddress());
         storeForUpdate.setArrivalDays(fromFormToDaysList(form));
         storeForUpdate.setWorkTime(form.getWorkTime());
-        storeForUpdate.setComment(form.getComments());
+        storeForUpdate.setComment(form.getComment());
 
         storeRepository.save(storeForUpdate);
     }
